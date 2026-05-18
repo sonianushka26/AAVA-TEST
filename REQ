@@ -1,0 +1,76 @@
+User Story: Application Form API Development
+Epic
+
+Application Form Management API
+
+User Story 1 — GET API to Fetch Application Form
+
+Title: Fetch Application Form Details
+
+As a frontend application or external system,
+I want to retrieve application form details using a GET API,
+So that users can view or review submitted application information.
+
+Acceptance Criteria
+API should support fetching application form details by Application ID.
+API should return application data in JSON format.
+API should return HTTP 200 for successful retrieval.
+API should return HTTP 404 if the application is not found.
+API should validate request parameters.
+API response should include:
+
+Application ID
+Applicant Name
+Email
+Phone Number
+Application Status
+Submitted Date
+Form Fields/Data
+API should handle authentication/authorization if required.
+API response time should be within acceptable limits (e.g., < 3 seconds).
+Example Endpoint
+
+GET /api/application/{applicationId}
+Sample Success Response
+{
+  "applicationId": "APP12345",
+  "applicantName": "John Doe",
+  "email": "john.doe@example.com",
+  "phoneNumber": "9876543210",
+  "status": "Submitted",
+  "submittedDate": "2026-05-18",
+  "formData": {
+    "address": "Chennai",
+    "qualification": "B.Tech"
+  }
+}
+
+User Story 2 — POST API to Submit Application Form
+
+Title: Submit Application Form
+
+As an applicant,
+I want to submit my application form through a POST API,
+So that my application details are stored successfully in the system.
+
+Acceptance Criteria
+API should accept application form data in JSON format.
+Mandatory fields should be validated.
+API should create a new application record in the database.
+API should return HTTP 201 when application is successfully created.
+API should return validation errors with HTTP 400 for invalid input.
+Duplicate submissions should be handled appropriately.
+API response should include generated Application ID and submission status.
+API should securely handle sensitive data.
+Audit logs should be maintained for submissions if applicable.
+
+Example Endpoint
+POST /api/application
+Sample Request
+{
+  "applicantName": "John Doe",
+  "email": "john.doe@example.com",
+  "phoneNumber": "9876543210",
+  "address": "Chennai",
+  "qualification": "B.Tech"
+}
